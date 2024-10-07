@@ -1,67 +1,64 @@
 import { useState } from 'react';
-import { BookCard } from '../movie-card/movie-card';
-import { BookView } from '../movie-view/movie-view';
+import { MovieCard } from '../movie-card/movie-card';
+import { MovieView } from '../movie-view/movie-view';
 
 export const MainView = () => {
-  const [books, setBooks] = useState([
+  const [movies, setMovies] = useState([
     {
       id: 1,
-      title: 'Eloquent JavaScript',
+      title: 'Interstellar',
       image:
-        'https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg',
-      author: 'Marijn Haverbeke',
-      {"_id":{"$oid":"66e73d58dbe8e5c391c73bfa"},"Title":"Interstellar","Description":"A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.","Genre":{"Name":"Science Fiction","Description":"A genre that explores imaginative and futuristic concepts, often involving advanced technology, space exploration, time travel, and extraterrestrial life. Sci-fi films challenge the boundaries of possibility and frequently address philosophical or ethical issues through speculative scenarios."},"Director":{"Name":"Christopher Nolan","Bio":"A British-American filmmaker known for his cerebral, nonlinear storytelling and innovative visual style. He is celebrated for movies like \"Inception,\" \"The Dark Knight,\" and \"Interstellar.\"","Birth":"1970","Death":"N/A"},"ImagePath":"Interstellar.jpg","Featured":"true"}
+        'https://m.media-amazon.com/images/I/A1JVqNMI7UL._AC_UF894,1000_QL80_.jpg',
+      director: 'Christopher Nolan',
+      genre: 'Sci-fi',
+      description:
+        'A genre that explores imaginative and futuristic concepts, often involving advanced technology, space exploration, time travel, and extraterrestrial life.',
     },
     {
       id: 2,
-      title: 'Mastering JavaScript Functional Programming',
+      title: 'Inception',
       image:
-        'https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg',
-      author: 'Federico Kereki',
+        'https://m.media-amazon.com/images/I/51oAya-AtgL._SX300_SY300_QL70_ML2_.jpg',
+      director: 'Christopher Nolan',
+      genre: 'Sci-fi',
+      description:
+        'A skilled thief, the absolute best in the dangerous art of extraction, steals secrets from deep within the subconscious during the dream state.',
     },
     {
       id: 3,
-      title: 'JavaScript: The Good Parts',
+      title: 'The Dark Knight',
       image:
-        'https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg',
-      author: 'Douglas Crockford',
-    },
-    {
-      id: 4,
-      title: 'JavaScript: The Definitive Guide',
-      image:
-        'https://images-na.ssl-images-amazon.com/images/I/51HbNW6RzhL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg',
-      author: 'David Flanagan',
-    },
-    {
-      id: 5,
-      title: 'The Road to React',
-      image:
-        'https://images-na.ssl-images-amazon.com/images/I/41MBLi5a4jL._SX384_BO1,204,203,200_.jpg',
-      author: 'Robin Wieruch',
+        'https://m.media-amazon.com/images/I/81rGCm0PyHL.__AC_SX300_SY300_QL70_ML2_.jpg',
+      director: 'Christopher Nolan',
+      genre: 'Action',
+      description:
+        'Batman sets out to dismantle the remaining criminal organizations that plague Gotham, but the Joker thrusts him into a personal conflict.',
     },
   ]);
 
-  const [selectedBook, setSelectedBook] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
-  if (selectedBook) {
+  if (selectedMovie) {
     return (
-      <BookView book={selectedBook} onBackClick={() => setSelectedBook(null)} />
+      <MovieView
+        movie={selectedMovie}
+        onBackClick={() => setSelectedMovie(null)}
+      />
     );
   }
 
-  if (books.length === 0) {
+  if (movies.length === 0) {
     return <div>The list is empty!</div>;
   }
 
   return (
     <div>
-      {books.map((book) => (
-        <BookCard
-          key={book.id}
-          book={book}
-          onBookClick={(newSelectedBook) => {
-            setSelectedBook(newSelectedBook);
+      {movies.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMovie(newSelectedMovie);
           }}
         />
       ))}

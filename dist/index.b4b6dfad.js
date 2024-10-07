@@ -27376,72 +27376,66 @@ var _movieView = require("../movie-view/movie-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [books, setBooks] = (0, _react.useState)([
+    const [movies, setMovies] = (0, _react.useState)([
         {
             id: 1,
-            title: "Eloquent JavaScript",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
-            author: "Marijn Haverbeke"
+            title: "Interstellar",
+            image: "https://m.media-amazon.com/images/I/A1JVqNMI7UL._AC_UF894,1000_QL80_.jpg",
+            director: "Christopher Nolan",
+            genre: "Sci-fi",
+            description: "A genre that explores imaginative and futuristic concepts, often involving advanced technology, space exploration, time travel, and extraterrestrial life."
         },
         {
             id: 2,
-            title: "Mastering JavaScript Functional Programming",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-            author: "Federico Kereki"
+            title: "Inception",
+            image: "https://m.media-amazon.com/images/I/51oAya-AtgL._SX300_SY300_QL70_ML2_.jpg",
+            director: "Christopher Nolan",
+            genre: "Sci-fi",
+            description: "A skilled thief, the absolute best in the dangerous art of extraction, steals secrets from deep within the subconscious during the dream state."
         },
         {
             id: 3,
-            title: "JavaScript: The Good Parts",
-            image: "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
-            author: "Douglas Crockford"
-        },
-        {
-            id: 4,
-            title: "JavaScript: The Definitive Guide",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51HbNW6RzhL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-            author: "David Flanagan"
-        },
-        {
-            id: 5,
-            title: "The Road to React",
-            image: "https://images-na.ssl-images-amazon.com/images/I/41MBLi5a4jL._SX384_BO1,204,203,200_.jpg",
-            author: "Robin Wieruch"
+            title: "The Dark Knight",
+            image: "https://m.media-amazon.com/images/I/81rGCm0PyHL.__AC_SX300_SY300_QL70_ML2_.jpg",
+            director: "Christopher Nolan",
+            genre: "Action",
+            description: "Batman sets out to dismantle the remaining criminal organizations that plague Gotham, but the Joker thrusts him into a personal conflict."
         }
     ]);
-    const [selectedBook, setSelectedBook] = (0, _react.useState)(null);
-    if (selectedBook) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.BookView), {
-        book: selectedBook,
-        onBackClick: ()=>setSelectedBook(null)
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+        movie: selectedMovie,
+        onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 48,
+        lineNumber: 43,
         columnNumber: 7
     }, undefined);
-    if (books.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 53,
+        lineNumber: 51,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: books.map((book)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.BookCard), {
-                book: book,
-                onBookClick: (newSelectedBook)=>{
-                    setSelectedBook(newSelectedBook);
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie,
+                onMovieClick: (newSelectedMovie)=>{
+                    setSelectedMovie(newSelectedMovie);
                 }
-            }, book.id, false, {
+            }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 59,
+                lineNumber: 57,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 57,
+        lineNumber: 55,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "CimHFlGIFu761w8RujovbxNUqxQ=");
+_s(MainView, "mc/a1DYbxNY5dc8pVVvSn8oEjc4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27490,23 +27484,23 @@ $parcel$ReactRefreshHelpers$67b2.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "BookCard", ()=>BookCard);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const BookCard = ({ book, onBookClick })=>{
+const MovieCard = ({ movie, onMovieClick })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         onClick: ()=>{
-            onBookClick(book);
+            onMovieClick(movie);
         },
-        children: book.title
+        children: movie.title
     }, void 0, false, {
         fileName: "src/components/movie-card/movie-card.jsx",
         lineNumber: 3,
         columnNumber: 5
     }, undefined);
 };
-_c = BookCard;
+_c = MovieCard;
 var _c;
-$RefreshReg$(_c, "BookCard");
+$RefreshReg$(_c, "MovieCard");
 
   $parcel$ReactRefreshHelpers$67b2.postlude(module);
 } finally {
@@ -27522,14 +27516,14 @@ $parcel$ReactRefreshHelpers$e9f6.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "BookView", ()=>BookView);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const BookView = ({ book, onBackClick })=>{
+const MovieView = ({ movie, onBackClick })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: book.image
+                    src: movie.image
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 5,
@@ -27550,7 +27544,7 @@ const BookView = ({ book, onBackClick })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: book.title
+                        children: movie.title
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 9,
@@ -27565,14 +27559,14 @@ const BookView = ({ book, onBackClick })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Author: "
+                        children: "Director: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 12,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: book.author
+                        children: movie.director
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 13,
@@ -27584,12 +27578,56 @@ const BookView = ({ book, onBackClick })=>{
                 lineNumber: 11,
                 columnNumber: 7
             }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Genre: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 16,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.genre
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 17,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 15,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Description: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 20,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.description
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 21,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 19,
+                columnNumber: 7
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: onBackClick,
                 children: "Back"
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 15,
+                lineNumber: 23,
                 columnNumber: 7
             }, undefined)
         ]
@@ -27599,9 +27637,9 @@ const BookView = ({ book, onBackClick })=>{
         columnNumber: 5
     }, undefined);
 };
-_c = BookView;
+_c = MovieView;
 var _c;
-$RefreshReg$(_c, "BookView");
+$RefreshReg$(_c, "MovieView");
 
   $parcel$ReactRefreshHelpers$e9f6.postlude(module);
 } finally {

@@ -10,7 +10,7 @@ export const MainView = () => {
     fetch('https://gianflix-02d504c4ae81.herokuapp.com/movies')
       .then((response) => response.json())
       .then((data) => {
-        const moviesFromApi = data.movies.map((movie) => {
+        const moviesFromApi = data?.map((movie) => {
           return {
             _id: movie._id,
             Title: movie.Title,

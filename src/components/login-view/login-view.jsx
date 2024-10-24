@@ -1,16 +1,15 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (event) => {
-    // this prevents the default behavior of the form which is to reload the entire page
     event.preventDefault();
 
     const data = {
-      access: username,
-      secret: password,
+      username: username,
+      password: password,
     };
 
     fetch('https://gianflix-02d504c4ae81.herokuapp.com/login', {
@@ -24,6 +23,8 @@ export const LoginView = ({ onLoggedIn }) => {
       .then((data) => {
         console.log('Login response: ', data);
         if (data.user) {
+          localStorage.setItem('user', JSON.stringify(data.user));
+          localStorage.setItem('token', data.token);
           onLoggedIn(data.user, data.token);
         } else {
           alert('No such user');
@@ -33,14 +34,6 @@ export const LoginView = ({ onLoggedIn }) => {
         alert('Something went wrong');
       });
   };
-
-  if (data.user) {
-    localStorage.setItem('user', JSON.stringify(data.user));
-    localStorage.setItem('token', data.token);
-    onLoggedIn(data.user, data.token);
-  } else {
-    alert('No such user');
-  }
 
   return (
     <form onSubmit={handleSubmit}>

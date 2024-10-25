@@ -28578,7 +28578,7 @@ const SignupView = ()=>{
             Email: email,
             Birthday: birthday
         };
-        fetch("https://gianflix-02d504c4ae81.herokuapp.com/login", {
+        fetch("https://gianflix-02d504c4ae81.herokuapp.com/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {

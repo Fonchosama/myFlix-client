@@ -17,7 +17,7 @@ export const MainView = () => {
       return;
     }
 
-    fetch('https://myflixmoviedb.herokuapp.com/movies', {
+    fetch('https://gianflix-02d504c4ae81.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())

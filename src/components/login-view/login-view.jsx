@@ -8,8 +8,8 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault();
 
     const data = {
-      username: username,
-      password: password,
+      Username: username,
+      Password: password,
     };
 
     fetch('https://gianflix-02d504c4ae81.herokuapp.com/login', {

@@ -27386,7 +27386,7 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        fetch("https://myflixmoviedb.herokuapp.com/movies", {
+        fetch("https://gianflix-02d504c4ae81.herokuapp.com/movies", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -28464,8 +28464,8 @@ const LoginView = ({ onLoggedIn })=>{
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
-            username: username,
-            password: password
+            Username: username,
+            Password: password
         };
         fetch("https://gianflix-02d504c4ae81.herokuapp.com/login", {
             method: "POST",

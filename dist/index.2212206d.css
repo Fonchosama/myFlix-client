@@ -10,9 +10,8 @@
   padding: 4px 12px;
 }
 
-.image {
-  width: 250px;
-  height: 400px;
+img {
+  width: 100%;
 }
 
 :root {

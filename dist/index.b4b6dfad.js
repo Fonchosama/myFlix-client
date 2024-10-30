@@ -27148,22 +27148,6 @@ const MainView = ()=>{
     }, [
         token
     ]);
-    // useEffect(() => {
-    //   fetch('https://gianflix-02d504c4ae81.herokuapp.com/movies')
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       const moviesFromApi = data?.map((movie) => {
-    //         return {
-    //           _id: movie._id,
-    //           Title: movie.Title,
-    //           Description: movie.Description,
-    //           Genre: movie.Genre,
-    //           Director: movie.Director,
-    //         };
-    //       });
-    //       setMovies(moviesFromApi);
-    //     });
-    // }, []);
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
@@ -27173,13 +27157,13 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 49,
+                lineNumber: 32,
                 columnNumber: 9
             }, undefined),
             "or",
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 56,
+                lineNumber: 39,
                 columnNumber: 9
             }, undefined)
         ]
@@ -27189,14 +27173,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 63,
+        lineNumber: 46,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 71,
+        lineNumber: 54,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27208,7 +27192,7 @@ const MainView = ()=>{
                     }
                 }, movie.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 77,
+                    lineNumber: 60,
                     columnNumber: 9
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27218,13 +27202,13 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 85,
+                lineNumber: 68,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 75,
+        lineNumber: 58,
         columnNumber: 5
     }, undefined);
 };
@@ -27239,7 +27223,7 @@ _c = MainView;
     children: "Logout"
 }, void 0, false, {
     fileName: "src/components/main-view/main-view.jsx",
-    lineNumber: 96,
+    lineNumber: 79,
     columnNumber: 1
 }, undefined);
 var _c;
@@ -27307,19 +27291,6 @@ const MovieCard = ({ movie, onMovieClick })=>{
     }, undefined);
 };
 _c = MovieCard;
-// return (
-//   <Card>
-//     <Card.Img variant="top" src={movie.ImagePath} />
-//     <Card.Body>
-//     <Card.Title>{movie.title}</Card.Title>
-//     <Card.Text>{movie.description}</Card.Text>
-//       <Button onClick={() => onBookClick(book)} variant="link">
-//         Open
-//       </Button>
-//     </Card.Body>
-//   </Card>
-// );
-// };
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         title: (0, _propTypesDefault.default).string.isRequired,
@@ -41028,7 +40999,8 @@ const MovieView = ({ movie, onBackClick })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                        src: movie.ImagePath
+                        src: movie.ImagePath,
+                        className: "image"
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 24,

@@ -1,8 +1,13 @@
 import './movie-view.scss';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies }) => {
+  const { movieId } = useParams();
+  const movie = movies.find((b) => b._id === movieId);
+
   return (
     <Row className="justify-content-md-center mt-5">
       <Col>
@@ -31,13 +36,9 @@ export const MovieView = ({ movie, onBackClick }) => {
         <img src={movie.ImagePath} className="image" />
       </Col>
       <Col>
-        <button
-          onClick={onBackClick}
-          className="back-button"
-          style={{ cursor: 'pointer' }}
-        >
+        <Link to="/" className="btn btn-warning">
           Back
-        </button>
+        </Link>
       </Col>
     </Row>
   );

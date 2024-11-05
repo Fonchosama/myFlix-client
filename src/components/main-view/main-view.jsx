@@ -5,6 +5,7 @@ import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
 import { Row, Col, Button } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { NavigationBar } from '../navigation-bar/navigation-bar';
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -28,37 +29,18 @@ export const MainView = () => {
       });
   }, [token]);
 
-  // if (!user) {
-  //   return (
-  //     <>
-  //       <LoginView
-  //         onLoggedIn={(user, token) => {
-  //           setUser(user);
-  //           setToken(token);
-  //         }}
-  //       />
-  //       or
-  //       <SignupView />
-  //     </>
-  //   );
-  // }
-
-  // if (selectedMovie) {
-  //   return (
-  //     <MovieView
-  //       movie={selectedMovie}
-  //       onBackClick={() => setSelectedMovie(null)}
-  //     />
-  //   );
-  // }
-
-  // if (movies.length === 0) {
-  //   return <div>The list is empty!</div>;
-  // }
-
   return (
     <BrowserRouter>
       <>
+        <NavigationBar
+          user={user}
+          onLoggedOut={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
+          }}
+        />
         <Routes>
           <Route
             path="/signup"

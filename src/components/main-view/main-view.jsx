@@ -7,6 +7,7 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { ProfileView } from '../profile-view/profile-view';
+import { Profile2View } from '../profile2-view/profile2-view';
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -15,25 +16,6 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-
-  useEffect(() => {
-    if (!token || !storedUser?.Username) {
-      return;
-    }
-
-    fetch(
-      `https://movies-app2024-74d588eb4f3d.herokuapp.com/users/${storedUser?.Username}`,
-      {
-        method: 'GET',
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data);
-        localStorage.setItem('user', JSON.stringify(data));
-      });
-  }, [token, storedUser?.Username]);
 
   useEffect(() => {
     if (!token) {
@@ -129,7 +111,7 @@ export const MainView = () => {
               </>
             }
           />
-          {/* <Route
+          <Route
             path="/profile"
             element={
               !user ? (
@@ -148,9 +130,14 @@ export const MainView = () => {
                 </Col>
               )
             }
-          /> */}
+          />
 
           <Route
+            path="/profile2"
+            element={<Profile2View hello="world" user={user} />}
+          />
+
+          {/* <Route
             path="/profile"
             element={
               <>
@@ -172,7 +159,7 @@ export const MainView = () => {
                 </Row>
               </>
             }
-          />
+          /> */}
 
           <Route
             path="/movies/:movieId"

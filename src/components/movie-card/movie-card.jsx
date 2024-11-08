@@ -2,7 +2,21 @@ import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import './movie-card.scss';
 import { Link } from 'react-router-dom';
-export const MovieCard = ({ movie, onMovieClick }) => {
+import { FaHeart, FaRegHeart } from 'react-icons/fa6';
+export const MovieCard = ({ movie, onMovieClick, onUserUpdate }) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = localStorage.getItem('token');
+
+  const isFav = user.FavoriteMovies.includes(movie._id);
+
+  const addFav = (movieId) => {
+    console.log('Add to fav movie ' + movieId);
+  };
+
+  const removeFav = (movieId) => {
+    console.log('Remove from fav movie ' + movieId);
+  };
+
   return (
     <Card className="h-100">
       <Card.Img variant="top" src={movie.ImagePath} />
@@ -10,6 +24,17 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>{movie.Description}</Card.Text>
         <Link to={`/movies/${movie._id}`}>View</Link>
+        <div className="fav-icon">
+          {isFav ? (
+            <button onClick={() => removeFav(movie._id)}>
+              <FaHeart />
+            </button>
+          ) : (
+            <button onClick={() => addFav(movie._id)}>
+              <FaRegHeart />
+            </button>
+          )}
+        </div>
       </Card.Body>
     </Card>
   );

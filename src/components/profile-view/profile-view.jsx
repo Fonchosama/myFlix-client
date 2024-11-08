@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { MovieCard } from '../movie-card/movie-card';
 
 export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
   // Get user data from localStorage
@@ -61,54 +62,70 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
           <span>{user.Email}</span>
         </div>
       </Col>
-
-      <Card>
-        <Card.Body>
-          <Card.Title>Edit Profile</Card.Title>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formUsername">
-              <Form.Label>Username:</Form.Label>
-              <Form.Control
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                minLength="4"
+      <Col>
+        <Card>
+          <Card.Body>
+            <Card.Title>Edit Profile</Card.Title>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="formUsername">
+                <Form.Label>Username:</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  minLength="4"
+                />
+              </Form.Group>
+              <Form.Group controlId="formPassword">
+                <Form.Label>Password:</Form.Label>
+                <Form.Control
+                  type="password"
+                  value={password}
+                  required
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group controlId="formEmail">
+                <Form.Label>Email:</Form.Label>
+                <Form.Control
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group controlId="formBdate">
+                <Form.Label>Birthday:</Form.Label>
+                <Form.Control
+                  type="date"
+                  value={moment(birthday).format('YYYY-MM-DD')}
+                  onChange={(e) => setBirthday(e.target.value)}
+                />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Edit Profile
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Col>{' '}
+      <div className="favorite_movies">
+        <h2>Favorite Movies</h2>
+        {localUser.favorite > 0 ? (
+          movies
+            .filter((movie) => localUser.favorites.includes(movie.id))
+            .map((movie) => (
+              <MovieCard
+                key={movie._id}
+                movie={movie}
+                updateUser={updateUser}
               />
-            </Form.Group>
-            <Form.Group controlId="formPassword">
-              <Form.Label>Password:</Form.Label>
-              <Form.Control
-                type="password"
-                value={password}
-                required
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formEmail">
-              <Form.Label>Email:</Form.Label>
-              <Form.Control
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formBdate">
-              <Form.Label>Birthday:</Form.Label>
-              <Form.Control
-                type="date"
-                value={moment(birthday).format('YYYY-MM-DD')}
-                onChange={(e) => setBirthday(e.target.value)}
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Edit Profile
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-
+            ))
+        ) : (
+          <p>No favorite movies yet</p>
+        )}
+      </div>
+      <br></br>
       <hr />
-      <h2>Favorite Movies</h2>
     </Row>
   );
 };

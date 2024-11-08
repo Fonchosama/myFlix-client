@@ -10,11 +10,31 @@ export const MovieCard = ({ movie, onMovieClick, onUserUpdate }) => {
   const isFav = user.FavoriteMovies.includes(movie._id);
 
   const addFav = (movieId) => {
-    console.log('Add to fav movie ' + movieId);
+    fetch(
+      `https://gianflix-02d504c4ae81.herokuapp.com/users/${user.username}/movies/${movieId}`,
+      {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+      .then((response) => response.json())
+      .then((user) => {
+        onUserUpdate(user);
+      });
   };
 
   const removeFav = (movieId) => {
-    console.log('Remove from fav movie ' + movieId);
+    fetch(
+      `https://gianflix-02d504c4ae81.herokuapp.com/users/${user.username}/movies/${movieId}`,
+      {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+      .then((response) => response.json())
+      .then((user) => {
+        onUserUpdate(user);
+      });
   };
 
   return (

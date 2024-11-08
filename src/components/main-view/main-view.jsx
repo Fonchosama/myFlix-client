@@ -7,7 +7,6 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { ProfileView } from '../profile-view/profile-view';
-import { Profile2View } from '../profile2-view/profile2-view';
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -131,35 +130,6 @@ export const MainView = () => {
               )
             }
           />
-
-          <Route
-            path="/profile2"
-            element={<Profile2View hello="world" user={user} />}
-          />
-
-          {/* <Route
-            path="/profile"
-            element={
-              <>
-                <Row className="justify-content-md-center">
-                  <Col md={5}>
-                    <ProfileView
-                      user={user}
-                      movies={movies}
-                      token={token}
-                      onUserUpdate={(updatedUser) => {
-                        setUser(updatedUser);
-                        localStorage.setItem(
-                          'user',
-                          JSON.stringify(updatedUser)
-                        );
-                      }}
-                    />
-                  </Col>
-                </Row>
-              </>
-            }
-          /> */}
 
           <Route
             path="/movies/:movieId"

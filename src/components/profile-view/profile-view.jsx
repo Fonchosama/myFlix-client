@@ -5,6 +5,8 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { MovieCard } from '../movie-card/movie-card';
 import { FaHeart, FaRegHeart } from 'react-icons/fa6';
+import { AiOutlineDelete } from 'react-icons/ai';
+import './profile-view.scss';
 
 export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
   // Get user data from localStorage
@@ -100,7 +102,7 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
                   minLength="4"
                 />
                 <button onClick={() => deleteaccount(user._id)}>
-                  <FaHeart />
+                  <AiOutlineDelete />
                 </button>
               </Form.Group>
               <Form.Group controlId="formPassword">
@@ -134,23 +136,25 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
             </Form>
           </Card.Body>
         </Card>
-      </Col>{' '}
-      <div className="favorite_movies">
-        <h2>Favorite Movies</h2>
-        {localUser.FavoriteMovies.length > 0 ? (
-          movies
-            .filter((movie) => movies.includes(movie))
-            .map((movie) => (
-              <MovieCard
-                key={movie._id}
-                movie={movie}
-                onUserUpdate={onUserUpdate}
-              />
-            ))
-        ) : (
-          <p>No favorite movies yet</p>
-        )}
-      </div>
+      </Col>
+      <Col xs="3" sm="3">
+        <div className="favorite_movies">
+          <h2>Favorite Movies</h2>
+          {localUser.FavoriteMovies.length > 0 ? (
+            movies
+              .filter((movie) => movies.includes(movie))
+              .map((movie) => (
+                <MovieCard
+                  key={movie._id}
+                  movie={movie}
+                  onUserUpdate={onUserUpdate}
+                />
+              ))
+          ) : (
+            <p>No favorite movies yet</p>
+          )}
+        </div>
+      </Col>
       <br></br>
       <hr />
     </Row>

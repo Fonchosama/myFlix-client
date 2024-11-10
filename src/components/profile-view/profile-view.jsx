@@ -4,6 +4,7 @@ import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { MovieCard } from '../movie-card/movie-card';
+import { FaHeart, FaRegHeart } from 'react-icons/fa6';
 
 export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
   // Get user data from localStorage
@@ -16,6 +17,28 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState(localUser.Email || '');
   const [birthday, setBirthday] = useState(localUser.Birthday);
+  const deleteaccount = (id) => {
+    console.log('probando');
+    fetch(
+      `https://gianflix-02d504c4ae81.herokuapp.com/users/${localUser.Username}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          console.log('updated user', user);
+          alert('Cuenta Borrada');
+        });
+      } else {
+        alert('Failed to update profile');
+      }
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,6 +99,9 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
                   onChange={(e) => setUsername(e.target.value)}
                   minLength="4"
                 />
+                <button onClick={() => deleteaccount(user._id)}>
+                  <FaHeart />
+                </button>
               </Form.Group>
               <Form.Group controlId="formPassword">
                 <Form.Label>Password:</Form.Label>

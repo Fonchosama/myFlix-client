@@ -11,7 +11,7 @@ export const MovieCard = ({ movie, onMovieClick, onUserUpdate }) => {
 
   const addFav = (movieId) => {
     fetch(
-      `https://gianflix-02d504c4ae81.herokuapp.com/users/${user.username}/movies/${movieId}`,
+      `https://gianflix-02d504c4ae81.herokuapp.com/users/${user.Username}/movies/${movieId}`,
       {
         method: 'PUT',
         headers: { Authorization: `Bearer ${token}` },
@@ -25,7 +25,7 @@ export const MovieCard = ({ movie, onMovieClick, onUserUpdate }) => {
 
   const removeFav = (movieId) => {
     fetch(
-      `https://gianflix-02d504c4ae81.herokuapp.com/users/${user.username}/movies/${movieId}`,
+      `https://gianflix-02d504c4ae81.herokuapp.com/users/${user.Username}/movies/${movieId}`,
       {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },

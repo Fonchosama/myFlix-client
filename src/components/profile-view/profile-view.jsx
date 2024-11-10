@@ -8,6 +8,7 @@ import { MovieCard } from '../movie-card/movie-card';
 export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
   // Get user data from localStorage
   const localUser = JSON.parse(localStorage.getItem('user'));
+  console.log(localUser);
   const localToken = localStorage.getItem('token');
 
   // Set initial state to user data
@@ -110,14 +111,14 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
       </Col>{' '}
       <div className="favorite_movies">
         <h2>Favorite Movies</h2>
-        {localUser.favorite > 0 ? (
+        {localUser.FavoriteMovies.length > 0 ? (
           movies
-            .filter((movie) => localUser.favorites.includes(movie.id))
+            .filter((movie) => movies.includes(movie))
             .map((movie) => (
               <MovieCard
                 key={movie._id}
                 movie={movie}
-                updateUser={updateUser}
+                onUserUpdate={onUserUpdate}
               />
             ))
         ) : (

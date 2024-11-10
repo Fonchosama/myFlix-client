@@ -16,6 +16,11 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
+  const onUserUpdate = (user) => {
+    setUser(user);
+    localStorage.setItem('user', JSON.stringify(user));
+  };
+
   useEffect(() => {
     if (!token) {
       return;
@@ -94,6 +99,7 @@ export const MainView = () => {
                             onMovieClick={(newSelectedMovie) => {
                               setSelectedMovie(newSelectedMovie);
                             }}
+                            onUserUpdate={onUserUpdate}
                           />
                         </Col>
                       ))

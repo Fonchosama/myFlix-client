@@ -13,7 +13,7 @@ export const MovieCard = ({ movie, onMovieClick, onUserUpdate }) => {
     fetch(
       `https://gianflix-02d504c4ae81.herokuapp.com/users/${user.Username}/movies/${movieId}`,
       {
-        method: 'PUT',
+        method: 'PATCH',
         headers: { Authorization: `Bearer ${token}` },
       }
     )

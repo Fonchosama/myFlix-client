@@ -137,6 +137,7 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
           </Card.Body>
         </Card>
       </Col>
+
       <Col xs="3" sm="3">
         <div className="favorite_movies">
           <h2>Favorite Movies</h2>

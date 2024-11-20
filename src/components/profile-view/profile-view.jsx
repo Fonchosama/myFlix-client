@@ -138,19 +138,19 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
         </Card>
       </Col>
 
-      <Col xs="3" sm="3">
+      <Col xs="12">
         <div className="favorite_movies">
           <h2>Favorite Movies</h2>
           {localUser.FavoriteMovies.length > 0 ? (
-            movies
-              .filter((movie) => movies.includes(movie))
-              .map((movie) => (
-                <MovieCard
-                  key={movie._id}
-                  movie={movie}
-                  onUserUpdate={onUserUpdate}
-                />
-              ))
+            <Row>
+              {movies
+                .filter((movie) => localUser.FavoriteMovies.includes(movie._id))
+                .map((movie) => (
+                  <Col key={movie._id} xs={6} sm={6} md={3} className="mb-4">
+                    <MovieCard movie={movie} onUserUpdate={onUserUpdate} />
+                  </Col>
+                ))}
+            </Row>
           ) : (
             <p>No favorite movies yet</p>
           )}

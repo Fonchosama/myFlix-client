@@ -74,7 +74,7 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
   };
 
   return (
-    <Row className="justify-content-md-center mt-5">
+    <Row className="justify-content-md-center mt-2">
       <Col>
         <h2>My Profile</h2>
         <div>
@@ -146,7 +146,7 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
               {movies
                 .filter((movie) => localUser.FavoriteMovies.includes(movie._id))
                 .map((movie) => (
-                  <Col key={movie._id} xs={6} sm={6} md={3} className="mb-4">
+                  <Col key={movie._id} xs={6} sm={4} md={3} className="mb-4">
                     <MovieCard movie={movie} onUserUpdate={onUserUpdate} />
                   </Col>
                 ))}

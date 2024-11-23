@@ -1,7 +1,46 @@
-@import '~bootstrap/scss/bootstrap.scss';
+$body-bg: #eafaf1; /* Fondo verde claro */
+$body-color: #333333; /* Color del texto */
+$primary: #88d498; /* Verde principal */
+$secondary: #567d46; /* Verde más oscuro */
+$font-family-base: 'Roboto', sans-serif;
 
-$color: steelblue;
+@import '~bootstrap/scss/bootstrap';
 
-.my-flix {
-  color: $color;
+:root {
+  --background-color: #eafaf1; /* Fondo verde claro */
+  --primary-color: #88d498; /* Verde principal */
+  --secondary-color: #567d46; /* Verde más oscuro */
+  --text-color: #333333; /* Color del texto */
+}
+
+body {
+  font-family: $font-family-base;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
 }

@@ -7,6 +7,7 @@ import { MovieCard } from '../movie-card/movie-card';
 import { FaHeart, FaRegHeart } from 'react-icons/fa6';
 import { AiOutlineDelete } from 'react-icons/ai';
 import './profile-view.scss';
+import { API_ENDPOINTS } from '../API';
 
 export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
   // Get user data from localStorage
@@ -74,7 +75,7 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
   };
 
   return (
-    <Row className="justify-content-md-center mt-5">
+    <Row className="justify-content-md-center mt-2">
       <Col>
         <h2>My Profile</h2>
         <div>
@@ -137,19 +138,20 @@ export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
           </Card.Body>
         </Card>
       </Col>
-      <Col xs="3" sm="3">
+
+      <Col xs="12">
         <div className="favorite_movies">
           <h2>Favorite Movies</h2>
           {localUser.FavoriteMovies.length > 0 ? (
-            movies
-              .filter((movie) => movies.includes(movie))
-              .map((movie) => (
-                <MovieCard
-                  key={movie._id}
-                  movie={movie}
-                  onUserUpdate={onUserUpdate}
-                />
-              ))
+            <Row>
+              {movies
+                .filter((movie) => localUser.FavoriteMovies.includes(movie._id))
+                .map((movie) => (
+                  <Col key={movie._id} xs={6} sm={4} md={3} className="mb-4">
+                    <MovieCard movie={movie} onUserUpdate={onUserUpdate} />
+                  </Col>
+                ))}
+            </Row>
           ) : (
             <p>No favorite movies yet</p>
           )}

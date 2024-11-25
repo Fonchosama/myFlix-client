@@ -1,4 +1,6 @@
-REACT APP
+# MyFlix
+
+Web application built with React. Here you can Signup, Login, Watch what movies are in the catalog, mark movies as favorites and search movies by name.
 
 Objective
 ● Using React, build the client-side for an app called myFlix based on its existing server-side code (REST API and database).

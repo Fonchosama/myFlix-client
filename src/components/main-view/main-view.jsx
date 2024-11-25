@@ -7,6 +7,7 @@ import { Row, Col } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { ProfileView } from '../profile-view/profile-view';
+import { API_ENDPOINTS } from '../API';
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -27,7 +28,7 @@ export const MainView = () => {
       return;
     }
 
-    fetch('https://gianflix-02d504c4ae81.herokuapp.com/movies', {
+    fetch(API_ENDPOINTS.MOVIES, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())

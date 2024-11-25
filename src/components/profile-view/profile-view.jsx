@@ -7,6 +7,7 @@ import { MovieCard } from '../movie-card/movie-card';
 import { FaHeart, FaRegHeart } from 'react-icons/fa6';
 import { AiOutlineDelete } from 'react-icons/ai';
 import './profile-view.scss';
+import { API_ENDPOINTS } from '../API';
 
 export const ProfileView = ({ movies, user, token, onUserUpdate }) => {
   // Get user data from localStorage

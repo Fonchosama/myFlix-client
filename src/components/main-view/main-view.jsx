@@ -103,7 +103,9 @@ export const MainView = () => {
               ) : (
                 <Row className="justify-content-md-center">
                   <Col md={5}>
-                    <LoginView onLoggedIn={(user) => setUser(user)} />
+                    <LoginView
+                      onLoggedIn={(user, token) => setUser(user, token)}
+                    />
                   </Col>
                 </Row>
               )

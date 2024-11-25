@@ -30,7 +30,7 @@ export const SignupView = () => {
         alert('Signup successful');
         window.location.reload();
       } else {
-        alert('Signup failed');
+        alert('Signup failed - User already exists');
       }
     });
   };
